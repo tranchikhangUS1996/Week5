@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="230dp"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:ard_view="http://schemas.android.com/tools"
+    android:id="@+id/card"
+    ard_view:cardElevation="10dp"
+    card_view:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:scaleType="centerCrop"
+            android:id="@+id/poster"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3" />
+
+        <LinearLayout
+            android:background="@color/contentColor"
+            android:orientation="vertical"
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:background="@color/titleColor"
+                android:textColor="#FFFFFF"
+                android:paddingLeft="5dp"
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="War of infinity"
+                android:id="@+id/title"
+                android:layout_weight="1.7"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+            <TextView
+                android:textColor="@color/blackText"
+                android:paddingLeft="5dp"
+                android:textStyle="italic"
+                android:text="october,20,2018"
+                android:id="@+id/date"
+                android:layout_weight="0.6"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+            <TextView
+                android:textColor="@color/ratecolor"
+                android:textStyle="bold"
+                android:paddingLeft="5dp"
+                android:text="rate: 9.2"
+                android:id="@+id/rate"
+                android:layout_weight="0.6"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+            <TextView
+                android:textColor="@color/blackText"
+                android:id="@+id/overView"
+                android:layout_weight="4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

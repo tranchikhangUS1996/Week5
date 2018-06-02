@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Retrofit</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="upcoming">UpComing</string>
+    <string name="nowplaying">Now Playing</string>
+</resources>
