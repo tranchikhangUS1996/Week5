@@ -39,8 +39,6 @@ public class TopRatedFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_top_rated, container, false);
-        ProgressBar progressBar = v.findViewById(R.id.toprated_progresssbar);
-        progressBar.setVisibility(View.VISIBLE);
         RecyclerView recyclerView = v.findViewById(R.id.toprated_recyclerView);
         FragmentComponent component = DaggerFragmentComponent
                 .builder()

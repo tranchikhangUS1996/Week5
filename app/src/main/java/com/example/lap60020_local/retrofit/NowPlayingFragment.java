@@ -41,8 +41,6 @@ public class NowPlayingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_now_playing, container, false);
-        ProgressBar progressBar = v.findViewById(R.id.nowplaying_progresssbar);
-        progressBar.setVisibility(View.VISIBLE);
         RecyclerView recyclerView = v.findViewById(R.id.nowplaying_recyclerView);
         FragmentComponent component = DaggerFragmentComponent
                 .builder()

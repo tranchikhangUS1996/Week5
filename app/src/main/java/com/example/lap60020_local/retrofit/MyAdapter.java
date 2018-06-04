@@ -127,9 +127,9 @@ class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements
                 // tinh item cuoi cung nhin thay
                 int lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
                 // neu con 1 item o cuoi thi tien hanh load
-                if(totalItem>0 && !isLoading && totalItem <= lastVisibleItem+2) {
+                if(totalItem>0 && !isLoading && totalItem <= lastVisibleItem+1) {
                     // load them data tang so trang len de load trang ke tiep tu web
-                    if(Threshold == Movies.size()) {
+                    if(MoviesFilterd == Movies && Threshold == Movies.size()) {
                         page++;
                         // them item null de bao hieu tao loading
                         if(page <= MaxPage) {
@@ -139,6 +139,7 @@ class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements
                         // goi load data
                         loaddata();
                     }
+                    // show them data
                     else {
                         int oldThres = Threshold;
                         Threshold = (MoviesFilterd.size() - Threshold)> MAXIMUM ? Threshold + MAXIMUM : MoviesFilterd.size();
@@ -152,6 +153,8 @@ class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements
                 super.onScrolled(recyclerView, dx, dy);
             }
         });
+        MoviesFilterd.add(null);
+        Threshold = 1;
     }
 
     @Override
@@ -184,8 +187,20 @@ class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements
             holder.movieTitle.setText(movie.getTitle());
             holder.release.setText(movie.getReleaseDate());
             String over = movie.getOverview();
-            int length = over.length() > 100 ? 100 : over.length();
-            holder.overView.setText(over.substring(0, length - 1) + "...");
+            int length = over.length();
+            try {
+                if(length > 100) {
+                    String description = over.substring(0, 100 - 1).concat("...");
+                    holder.overView.setText(description);
+                } else {
+                    holder.overView.setText(over);
+                }
+            } catch(Exception e) {
+                Log.d("Error",e.getMessage()
+                        + movie.getTitle()
+                        + " length = "
+                        + String.valueOf(over.length()));
+            }
             holder.rate.setText("Rate: " + String.valueOf(movie.getVoteAverage()));
             //
             String imagePath = MyApiClient.IMAGE_PATH + movie.getPosterPath();
@@ -221,7 +236,7 @@ class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements
                             Movies = list;
                             MoviesFilterd = Movies;
                             Threshold = MoviesFilterd.size() >= MAXIMUM ? MAXIMUM : MoviesFilterd.size();
-                            notifyItemRangeChanged(0, Threshold);
+                            notifyDataSetChanged();
                         } else {
                             //load them data
                             int size = MoviesFilterd.size() - 1;

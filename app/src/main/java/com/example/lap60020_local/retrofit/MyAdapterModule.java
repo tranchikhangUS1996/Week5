@@ -23,7 +23,7 @@ public class MyAdapterModule {
 
     @Provides
     public LinearLayoutManager provideLinearlayoutManager() {
-        return new LinearLayoutManager(context);
+        return new LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false);
     }
 
     @Provides
